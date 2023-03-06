@@ -1,13 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import Box from './box';
 import BoardDisplay from './board';
 
 
 function App() {
   return (
     <div>
-     <h1>TIC TAC TOE</h1>
+     <h1 className='header'>TIC TAC TOE</h1>
     <BoardDisplay/>
     </div>
   );

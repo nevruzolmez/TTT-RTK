@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,9 +35,36 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
+* {
+  /* When you declare as a border-box, you do not need to do some maths. When you give a width, it will be inclusive of padding & border  */
+  box-sizing: border-box;
+}
 .xbtn {
   height: 100px;
   width: 100px;
+  border-radius: 10%;
+}
+.xbtn:hover {
+  /* When you move the cursor to the box, its style will change */
+  background-color:  #1877f2;
+  color: white;
+  font-weight: bold;
+}
+
+.reset {
+  width: 300px;
+  height: 50px;
+  border: 5px solid  ;
+  background-color: #1877f2;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+}
+.reset:hover{
+  background-color: white;
+  color: black;
+  /* Transform rotate will rotate the button by the defined angle */
+  transform: rotate(180deg);
 }

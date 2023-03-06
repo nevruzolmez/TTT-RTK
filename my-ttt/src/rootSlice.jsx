@@ -8,6 +8,7 @@ const initialState = {
     ],
     turn : "X",
     winner : "-",
+    counter : 0,
 }
 
 export const rootSlice = createSlice({
@@ -15,7 +16,6 @@ export const rootSlice = createSlice({
     initialState,
     reducers: {
         playRoot: (state, action) => {
-
             let coordinate = action.payload.split("-");
             let row = coordinate[0];
             let col = coordinate[1];
@@ -28,6 +28,7 @@ export const rootSlice = createSlice({
                     state.turn = "X";
                 }
             }
+            state.counter +=1;
         },
         scoreCheck: (state,action) => {
             let br = state.board;
@@ -93,5 +94,6 @@ export const {
 export const selectBoard = (state) => state.board.board;
 export const stateTurn = (state) => state.board.turn;
 export const stateWinner = (state) => state.board.winner;
+export const roundCounter = (state) => state.board.counter;
 
 export default rootSlice.reducer;

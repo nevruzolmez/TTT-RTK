@@ -1,5 +1,5 @@
 import React from "react";
-import { selectBoard, playRoot, scoreCheck, reset, stateWinner } from "./rootSlice";
+import { selectBoard, playRoot, scoreCheck, reset, stateWinner, roundCounter } from "./rootSlice";
 import "./App.css"
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,9 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 const BoardDisplay = () => {
     let board = useSelector(selectBoard);
     let winner = useSelector(stateWinner);
-    if(winner !== "-") {
-        
-    }
+    let counter = useSelector(roundCounter);
+    
     const dispatch = useDispatch();
     const handlePlay = (e) => {
         // To get the id of the clicked box, we should use e.target.id. So that we can get the address for the box and manipulate it.
@@ -42,9 +41,23 @@ const BoardDisplay = () => {
         dispatch(reset());
     }
     // console.log("HERE IS YOUR ROWS",boxes)
+    if(winner !== "-") {
+        return(
+            <div>
+                <button className="reset" onClick={resetGame}>{`PLAYER ${winner} WINS!! // Click here to restart`}</button>
+            </div>
+        )
+    }
+    if(counter === 9) {
+        return(
+            <div>
+                <button className="reset" onClick={resetGame}>{`ROUND DRAW, TRY AGAIN!`}</button>
+            </div>
+        )
+    }
     return (
         <div>
-            <button onClick={resetGame}>Reset</button>
+            <button className="reset" onClick={resetGame}>Reset</button>
             <br></br>
             {boxes[0]}
             <br></br>
